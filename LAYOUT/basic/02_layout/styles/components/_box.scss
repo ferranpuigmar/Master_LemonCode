@@ -1,0 +1,23 @@
+@use '../mixins' as *;
+
+.box {
+    padding: 1rem;
+    display: inline-block;
+    border-radius: 4px;
+
+    &--base {
+        background-color: var(--color-base);
+    }
+
+    &--warning {
+        background-color: var(--color-warning);
+    }
+
+    &--important {
+        background-color: var(--color-important);
+    }
+
+    &--shadow {
+        @include box-shadow();
+    }
+}

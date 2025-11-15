@@ -1,0 +1,15 @@
+@use 'sass:color';
+
+// colors
+$color-primary: #CCDE1C;
+$color-primary-light: color.scale($color-primary, $lightness: 70%);
+$color-secondary: #393F08;
+$color-secondary-light: color.scale($color-secondary, $lightness: 30%);
+$color-ternary: #393F08;
+$color-neutral: #F5F5F5;
+
+// radius
+$border-radius: 4px;
+
+// fonts
+$font-primary: 'Jost', sans-serif;

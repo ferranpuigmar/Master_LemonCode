@@ -1,0 +1,149 @@
+.color-golden {
+  color: #A99861;
+}
+
+.color-purple {
+  color: #9D68A0;
+}
+
+.color-cyan {
+  color: #58D3D9;
+}
+
+.color-white {
+  color: #FFFFFF;
+}
+
+.box {
+  padding: 1rem;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.flex-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+
+.home .flex-list {
+  margin-bottom: 1rem;
+}
+.home .flex-list > div {
+  flex-basis: 80px;
+  min-width: 80px;
+}
+.home .flex-list > div[class*=base-color] {
+  color: white;
+}
+
+.primary-base-color {
+  background-color: #F44336 !important;
+}
+
+.primary-lighten-1 {
+  background-color: rgb(245.375, 90.5, 79.125) !important;
+}
+
+.primary-darken-1 {
+  background-color: rgb(242.4537735849, 40.5735849057, 25.7462264151) !important;
+}
+
+.primary-lighten-2 {
+  background-color: rgb(246.75, 114, 104.25) !important;
+}
+
+.primary-darken-2 {
+  background-color: rgb(226.0301886792, 26.9886792453, 12.3698113208) !important;
+}
+
+.primary-lighten-3 {
+  background-color: rgb(248.125, 137.5, 129.375) !important;
+}
+
+.primary-darken-3 {
+  background-color: rgb(197.7764150943, 23.6150943396, 10.8235849057) !important;
+}
+
+.primary-lighten-4 {
+  background-color: rgb(249.5, 161, 154.5) !important;
+}
+
+.primary-darken-4 {
+  background-color: rgb(169.5226415094, 20.241509434, 9.2773584906) !important;
+}
+
+.secondary-base-color {
+  background-color: #4CAF4F !important;
+}
+
+.secondary-lighten-1 {
+  background-color: rgb(96.9945219124, 186.3804780876, 99.703187251) !important;
+}
+
+.secondary-darken-1 {
+  background-color: rgb(68.4, 157.5, 71.1) !important;
+}
+
+.secondary-lighten-2 {
+  background-color: rgb(119.5667330677, 196.1832669323, 121.8884462151) !important;
+}
+
+.secondary-darken-2 {
+  background-color: rgb(60.8, 140, 63.2) !important;
+}
+
+.secondary-lighten-3 {
+  background-color: rgb(142.1389442231, 205.9860557769, 144.0737051793) !important;
+}
+
+.secondary-darken-3 {
+  background-color: rgb(53.2, 122.5, 55.3) !important;
+}
+
+.secondary-lighten-4 {
+  background-color: rgb(164.7111553785, 215.7888446215, 166.2589641434) !important;
+}
+
+.secondary-darken-4 {
+  background-color: rgb(45.6, 105, 47.4) !important;
+}
+
+.base-color {
+  background-color: #3F50B5 !important;
+}
+
+.lighten-1 {
+  background-color: rgb(82.3452868852, 98.5614754098, 194.9047131148) !important;
+}
+
+.darken-1 {
+  background-color: rgb(56.7, 72, 162.9) !important;
+}
+
+.lighten-2 {
+  background-color: rgb(107.0102459016, 120.9098360656, 203.4897540984) !important;
+}
+
+.darken-2 {
+  background-color: rgb(50.4, 64, 144.8) !important;
+}
+
+.lighten-3 {
+  background-color: rgb(131.675204918, 143.2581967213, 212.074795082) !important;
+}
+
+.darken-3 {
+  background-color: rgb(44.1, 56, 126.7) !important;
+}
+
+.lighten-4 {
+  background-color: rgb(156.3401639344, 165.606557377, 220.6598360656) !important;
+}
+
+.darken-4 {
+  background-color: rgb(37.8, 48, 108.6) !important;
+}
+
+/*# sourceMappingURL=index.css.map */

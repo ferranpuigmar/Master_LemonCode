@@ -1,0 +1,16 @@
+@use '../base/variables' as *;
+@use '../base/spacing' as *;
+
+html {
+    overflow-x: hidden;
+
+}
+
+body {
+    background-color: $color-secondary;
+    font-family: $font-primary;
+}
+
+main {
+    padding: $spacing-4
+}

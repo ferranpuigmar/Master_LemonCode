@@ -1,0 +1,25 @@
+// Colores principales
+$primary-color: #5aa832;
+$secondary-color: #78BF42;
+
+// Colores de texto
+$text-white: #ffffff;
+$text-dark: #333333;
+$text-black: #000000;
+$text-medium: #555555;
+$text-light: #999999;
+
+// Colores de botones
+$button-primary-bg: $primary-color;
+$button-secondary-bg: $secondary-color;
+$button-text-color: $text-white;
+
+// Colores de fondo
+$background-light: #f8f9fa;
+$background-dark: #343a40;
+$background-white: $text-white;
+
+// Colores de bordes
+$border-light: #c1c1c1;
+$border-medium: $text-light;
+$border-dark: #666666;

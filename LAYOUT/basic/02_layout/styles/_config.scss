@@ -1,0 +1,6 @@
+@use 'mixins';
+@use 'base/variables' as vars;
+
+// Generar todos los temas del proyecto
+@include mixins.export-theme('A', vars.$theme-A);
+@include mixins.export-theme('B', vars.$theme-B);

@@ -1,0 +1,3 @@
+@mixin box-shadow($left:  var(--shadow-x), $top: var(--shadow-y), $blur: var(--shadow-blur), $color: var(--shadow-color)) {
+  box-shadow: #{$left} #{$top} #{$blur} #{$color};
+}

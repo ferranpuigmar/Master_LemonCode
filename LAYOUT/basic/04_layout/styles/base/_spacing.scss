@@ -1,0 +1,14 @@
+$spacing-base: 4px;
+
+$spacing-xs: $spacing-base * 1;      // 4px
+$spacing-sm: $spacing-base * 2;      // 8px  
+$spacing-md: $spacing-base * 3;      // 12px
+$spacing-lg: $spacing-base * 4;      // 16px
+$spacing-xl: $spacing-base * 5;      // 20px
+
+$spacing-0: 0;
+$spacing-1: $spacing-xs;             // 4px
+$spacing-2: $spacing-sm;             // 8px
+$spacing-3: $spacing-md;             // 12px
+$spacing-4: $spacing-lg;             // 16px
+$spacing-5: $spacing-xl;             // 20px

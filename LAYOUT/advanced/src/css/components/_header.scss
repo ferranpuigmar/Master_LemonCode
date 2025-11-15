@@ -1,0 +1,50 @@
+@use '../utilities' as *;
+@use '../base/spacing' as *;
+@use '../base/variables' as *;
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-3;
+
+    @include media-breakpoint(xl) {
+        padding: $spacing-4;
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        img {
+            width: 120px;
+            height: auto;
+
+            @include media-breakpoint(xl) {
+                width: auto;
+                height: 77px;
+            }
+        }
+
+
+        &__platform-title {
+            display: none;
+            color: $color-primary;
+            font-weight: 700;
+            font-size: 1.2rem;
+
+            @include media-breakpoint(xl) {
+                display: block;
+            }
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        gap: 20px;
+        font-weight: bold;
+        cursor: pointer;
+        flex-flow: row nowrap;
+    }
+}

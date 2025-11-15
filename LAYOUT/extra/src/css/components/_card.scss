@@ -1,0 +1,28 @@
+@use '../base' as *;
+@use '../utilities/breakpoints' as *;
+
+.card {
+    background-color: white;
+    padding: $spacing-3;
+    display: flex;
+    flex-flow: row;
+    gap: $spacing-2;
+    align-items: center;
+
+    img {
+        border-radius: 100%;
+        width: 80px;
+    }
+
+    @include media-breakpoint(sm) {
+        border:1px solid black;
+        flex-flow: column;
+        border-radius: $border-radius;
+
+        .member-name {
+            font-size: 0.8rem;
+            text-align: center;
+            min-height: 30px;
+        }
+    }
+}

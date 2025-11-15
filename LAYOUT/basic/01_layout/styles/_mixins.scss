@@ -1,0 +1,33 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+
+@mixin generate-palette($base-color, $steps-between: 4, $name: null) {
+    $shades: (
+        'base-color': $base-color
+    );
+
+    @for $i from 1 through $steps-between {
+        $lighten-percentage: math.div(50%, $steps-between) * $i;
+        $darken-percentage: math.div(-40%, $steps-between) * $i;  
+        $shades: map.merge(
+            $shades,
+            (
+                'lighten-#{$i}': color.scale($base-color, $lightness: $lighten-percentage),
+                'darken-#{$i}': color.scale($base-color, $lightness: $darken-percentage)
+            )
+        );  
+    }
+
+  @each $shade, $color in $shades {
+    @if $name {
+      .#{$name}-#{$shade} {
+        background-color: $color !important;
+      }
+    } @else {
+      .#{$shade} {
+        background-color: $color !important;
+      }
+    }
+  }
+}

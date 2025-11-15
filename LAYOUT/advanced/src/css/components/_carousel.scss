@@ -1,0 +1,139 @@
+@use '../utilities' as *;
+@use '../base' as *;
+
+.top {
+    display: flex;
+    flex-direction: column-reverse;
+
+    @include media-breakpoint(sm) {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+    }
+
+    .item {
+        flex: 1 1 auto;
+
+        @include media-breakpoint(sm) {
+            &:nth-of-type(-n + 2) {
+                display: none;
+            }
+        }
+
+        @include media-breakpoint(xl) {
+            &:nth-of-type(-n + 2) {
+                display: block;
+            }
+        }
+
+        img {
+            width: 100%;
+
+            @include media-breakpoint(sm) {
+                min-width: 225px;
+            }
+        }
+    }
+}
+
+.first,
+.second {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+    flex-direction: column;
+
+    .item {
+        aspect-ratio: 16 / 9;
+        width: 100%;
+
+        img {
+            display: block;
+            transition: 0.3s ease-in-out;
+            position: relative;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            transition: outline-color .2s ease, outline-offset .2s ease, transform .2s ease;
+            outline: 2px solid transparent;
+            outline-offset: -2px;
+
+            @include hover {
+                outline-color: $color-secondary;
+                outline-offset: 0;
+                cursor: pointer;
+                transform: scale(1.3);
+                transform-origin: center;
+                z-index: 10;
+            }
+        }
+
+        &:first-child {
+            img {
+                @include hover {
+                    transform-origin: left center;
+                }
+            }
+        }
+
+        &:last-child {
+            img {
+                @include hover {
+                    transform-origin: right center;
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint(sm) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+
+        .item {
+            img {
+                min-width: 250px;
+                height: auto;
+            }
+        }
+    }
+
+    @include media-breakpoint(md) {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto 300px;
+        gap: $spacing-1;
+
+        .item {
+            &:nth-last-of-type(-n + 2) {
+                margin-top: $spacing-1;
+                grid-column: span 2;
+                grid-row: 2;
+
+                img {
+                    min-width: 100%;
+                }
+            }
+        }
+    }
+
+    @include media-breakpoint(xl) {
+        display: flex;
+        flex-flow: row wrap;
+
+        .item {
+            flex: 1;
+            height: auto;
+
+            &:nth-last-of-type(-n + 2) {
+                margin-top: 0;
+            }
+
+            img {
+                min-width: 0;
+            }
+        }
+    }
+}
+
+.second {
+    margin-bottom: $spacing-20;
+}

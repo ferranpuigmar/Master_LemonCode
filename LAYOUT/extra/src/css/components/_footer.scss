@@ -1,0 +1,6 @@
+@use '../base' as *;
+
+footer {
+    background-color: $color-primary-light;
+    padding: $spacing-2;
+}

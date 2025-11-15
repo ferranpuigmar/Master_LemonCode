@@ -1,0 +1,12 @@
+@use '../base/variables' as themes;
+@use 'sass:map';
+
+@mixin export-theme($theme-name, $theme-map) {
+  $merged-theme: map.merge(themes.$theme-base, $theme-map);
+  
+  .theme-#{$theme-name} {
+    @each $key, $value in $merged-theme {
+      --#{$key}: #{$value};
+    }
+  }
+}

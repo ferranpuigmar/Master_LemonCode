@@ -1,0 +1,29 @@
+@use '../base' as *;
+@use '../utilities' as *;
+
+.section-title {
+    color: $color-primary;
+    margin-top: $spacing-20;
+    margin-bottom: $spacing-3;
+
+    &:first-of-type {
+        margin-top: $spacing-10;
+    }
+    
+    h2 {
+        margin: 0;
+        font-weight: 500;
+        font-size: clamp(1rem, 2.5rem - 0.8vw, 2.5rem);
+    }
+
+    #top-text {
+        &::before {
+            content: '3';
+            font-weight: 700;
+
+            @include media-breakpoint(xl) {
+                content: '5';
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+@use '../base/variables' as *;
+@use '../base/spacing' as *;
+
+body {
+    display: flex;
+    flex-flow: column;
+    font-family: $font-primary;
+}
+
+main {
+    background-color: $color-neutral;
+    padding: $spacing-3 $spacing-2;
+}
+
+.main-wrapper {
+    flex-grow: 1;
+}

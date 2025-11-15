@@ -1,0 +1,14 @@
+.home {
+    .flex-list {
+        margin-bottom: 1rem;
+
+        > div {
+            flex-basis: 80px; 
+            min-width: 80px;
+
+            &[class*="base-color"] {
+                color: white
+            }
+        }
+    }
+}

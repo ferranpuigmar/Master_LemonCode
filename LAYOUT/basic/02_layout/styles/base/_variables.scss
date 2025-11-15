@@ -1,0 +1,23 @@
+$theme-base: (
+    shadow-y: 4px,
+    shadow-blur: 8px,
+    shadow-color: rgba(0, 0, 0, 0.2)
+);
+
+$theme-A: (
+    color-base: #FE0000,
+    color-important: #660000,
+    color-warning: #FEBFCD,
+    main-font: 'Arial, sans-serif',
+    secondary-font: 'Georgia, serif',
+    shadow-x: 4px,
+);
+
+$theme-B: (
+    color-base: #0000FF,
+    color-important: #000066,
+    color-warning: #01FFFF,
+    main-font: 'Futura, sans-serif',
+    secondary-font: 'Times New Roman, serif',
+    shadow-x: -4px
+);

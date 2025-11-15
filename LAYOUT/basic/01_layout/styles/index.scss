@@ -1,0 +1,8 @@
+@use 'mixins';
+@use 'base';
+@use 'components';
+@use 'pages';
+
+@include mixins.generate-palette(#F44336, 4, 'primary');
+@include mixins.generate-palette(#4CAF4F, 4, 'secondary');
+@include mixins.generate-palette(#3F50B5, 4);

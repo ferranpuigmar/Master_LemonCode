@@ -1,0 +1,69 @@
+.theme-A {
+  --shadow-y: 4px;
+  --shadow-blur: 8px;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --color-base: #FE0000;
+  --color-important: #660000;
+  --color-warning: #FEBFCD;
+  --main-font: Arial, sans-serif;
+  --secondary-font: Georgia, serif;
+  --shadow-x: 4px;
+}
+
+.theme-B {
+  --shadow-y: 4px;
+  --shadow-blur: 8px;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --color-base: #0000FF;
+  --color-important: #000066;
+  --color-warning: #01FFFF;
+  --main-font: Futura, sans-serif;
+  --secondary-font: Times New Roman, serif;
+  --shadow-x: -4px;
+}
+
+.main-font {
+  font-family: var(--main-font);
+}
+
+.secondary-font {
+  font-family: var(--secondary-font);
+}
+
+.box {
+  padding: 1rem;
+  display: inline-block;
+  border-radius: 4px;
+}
+.box--base {
+  background-color: var(--color-base);
+}
+.box--warning {
+  background-color: var(--color-warning);
+}
+.box--important {
+  background-color: var(--color-important);
+}
+.box--shadow {
+  box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur) var(--shadow-color);
+}
+
+.flex-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.flex-list-column {
+  flex-direction: column;
+}
+
+.home .flex-list {
+  margin-bottom: 1rem;
+}
+.home .flex-list > div {
+  flex-basis: 80px;
+  width: 80px;
+}
+
+/*# sourceMappingURL=index.css.map */

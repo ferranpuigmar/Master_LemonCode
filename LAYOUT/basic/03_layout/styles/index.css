@@ -1,0 +1,42 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.main-navigation ul {
+  display: flex;
+  flex-direction: column;
+  background-color: #00697B;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 576px) {
+  .main-navigation ul {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.main-navigation ul li a {
+  display: block;
+  padding: 1rem;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-navigation ul li a:hover {
+  text-decoration: none;
+}
+.main-navigation ul li a:focus, .main-navigation ul li a:focus-visible {
+  border: 0;
+  outline: none;
+  outline-offset: 0;
+}
+.main-navigation ul li a:active, .main-navigation ul li a:focus {
+  background-color: #2E4757;
+}
+
+/*# sourceMappingURL=index.css.map */

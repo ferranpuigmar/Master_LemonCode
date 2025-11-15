@@ -1,0 +1,15 @@
+@use '../base' as *;
+@use '../utilities' as *;
+
+.button {
+    padding: $spacing-3 $spacing-2;
+    color: $color-primary;
+    border-radius: $border-radius;
+    font-weight: 400;
+
+    @include hover {
+        cursor: pointer;
+        background-color: $color-primary;
+        color: $color-secondary;
+    }
+}

@@ -1,0 +1,33 @@
+@use 'sass:color';
+@use '../base/colors' as *;
+@use '../base/spacing' as *;
+
+.button {
+    padding: $spacing-1 $spacing-5;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: $button-text-color;
+    background-color: $button-secondary-bg;
+    border: none;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: color.scale($button-secondary-bg, $lightness: -10%);
+    }
+
+    &:active {
+        background-color: color.scale($button-secondary-bg, $lightness: -20%);
+    }
+
+    &--primary {
+        background-color: $button-primary-bg;
+
+        &:hover {
+            background-color: color.scale($button-primary-bg, $lightness: -10%);
+        }
+
+        &:active {
+            background-color: color.scale($button-primary-bg, $lightness: -20%);
+        }
+    }
+}
