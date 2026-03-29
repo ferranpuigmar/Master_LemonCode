@@ -1,18 +1,18 @@
 import React, { useEffect } from "react";
 
-export type GetTotalPagesCB<Links> = (links: Links) => number;
+export type GetTotalPagesCB<PaginationInfo> = (links: PaginationInfo) => number;
 
-export const useGetTotalPages = <TLink>({ pageGeneratorCallBack }: { pageGeneratorCallBack: (links: TLink) => number }) => {
-    const [links, setLinks] = React.useState<TLink | undefined>(undefined);
+export const useGetTotalPages = <PaginationInfo>({ pageGeneratorCallBack }: { pageGeneratorCallBack: (links: PaginationInfo) => number }) => {
+    const [paginationInfo, setPaginationInfo] = React.useState<PaginationInfo | undefined>(undefined);
     const [totalPages, setTotalPages] = React.useState<number>(1);
 
     useEffect(() => {
-        const newTotalPages = links ? pageGeneratorCallBack(links) ?? 0 : 0;
+        const newTotalPages = paginationInfo ? pageGeneratorCallBack(paginationInfo) ?? 0 : 0;
         setTotalPages(newTotalPages);
-    }, [links]);
+    }, [paginationInfo]);
 
     return {
-        setLinks,
+        setPaginationInfo,
         totalPages
     }
 }

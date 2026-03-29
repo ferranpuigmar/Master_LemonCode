@@ -2,30 +2,29 @@ import React from "react";
 import { GetTotalPagesCB, useGetTotalPages } from "./use-pagination/use-pagination";
 import { useDebounce } from "@src/common/hooks/use-debounce";
 
-export type FetchResult<Item, Links> = {
+export type FetchResult<Item, PaginationInfo> = {
     data: Item[];
-    links: Links;
+    paginationInfo: PaginationInfo;
 }
 
-export type ListStrategy<Item, FSearch, Links, PerPage = number> = {
-    fetchCB: (search: FSearch) => Promise<FetchResult<Item, Links>>;
-    getTotalPagesCB: GetTotalPagesCB<Links>;
-    perPage?: PerPage;
+export type ListStrategy<Item, FSearch, PaginationInfo> = {
+    fetchCB: (search: FSearch) => Promise<FetchResult<Item, PaginationInfo>>;
+    getTotalPagesCB: GetTotalPagesCB<PaginationInfo>;
 };
 
-export const useSearchableList = <TItem, FSearch, Links>(strategy: ListStrategy<TItem, FSearch, Links>
+export const useSearchableList = <Item, FSearch, PaginationInfo>(strategy: ListStrategy<Item, FSearch, PaginationInfo>
 ) => {
-    const [items, setItems] = React.useState<TItem[]>([]);
+    const [items, setItems] = React.useState<Item[]>([]);
     const [isLoading, setIsLoading] = React.useState(true);
     const { debounce } = useDebounce();
 
-    const { totalPages, setLinks } = useGetTotalPages({ pageGeneratorCallBack: strategy.getTotalPagesCB });
+    const { totalPages, setPaginationInfo } = useGetTotalPages({ pageGeneratorCallBack: strategy.getTotalPagesCB });
 
     const search = React.useCallback(async (searchParams: FSearch = {} as FSearch) => {
         setIsLoading(true);
 
         const result = await strategy.fetchCB(searchParams);
-        setLinks(result.links);
+        setPaginationInfo(result.paginationInfo);
         setItems(result.data);
         setIsLoading(false);
     }, [])

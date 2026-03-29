@@ -1,5 +1,5 @@
 import React from 'react'
-import { DEFAULT_MEMBER_FOR_GITHUB, GetListItemsParams, getMemberCollection } from './list.api';
+import { DEFAULT_MEMBER_FOR_GITHUB, getMemberCollection } from './list.api';
 import SearchBar from '@src/common/components/list-search-bar';
 import ListHeader from '@src/common/components/list-header';
 import { useQueryParam } from '@src/common/hooks/use-queryParam';
@@ -10,13 +10,13 @@ import { PER_PAGE, QUERY_PARAM_NAME } from '@src/common/pods/list/list.constants
 import ListComponent from '@src/common/pods/list/list.component';
 import { routes } from '@src/core/router';
 import { Box, Container, Pagination, Stack } from '@mui/material';
+import { GetListItemsParams } from '@src/common/pods/list/list.api';
 
 const DEFAULT_SEARCH_PARAMS = `per_page=${PER_PAGE}&page=1`;
 
 const strategy: ListStrategy<MemberEntity, GetListItemsParams, string | undefined> = {
     fetchCB: getMemberCollection,
-    getTotalPagesCB: getTotalPagesFromLinkHeader,
-    perPage: PER_PAGE
+    getTotalPagesCB: getTotalPagesFromLinkHeader
 };
 
 const ListGithubContainer = () => {
