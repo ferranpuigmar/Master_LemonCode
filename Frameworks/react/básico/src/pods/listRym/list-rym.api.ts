@@ -6,11 +6,9 @@ import { GetItemsListFn, GetListItemsParams, GetListItemsResponse } from "@src/c
 type Result = GetListItemsResponse<MemberEntity, MemberRickAndMortyEntityApiInfo>;
 
 export const getCharactersCollection: GetItemsListFn<GetListItemsParams, Result> = async ({ name, params, page }) => {
-    console.log({ name, params, page });
     const urlParams: string[] = [];
     if (name) urlParams.push(`name=${name}`);
     if (page) urlParams.push(`page=${page}`);
-    console.log({ urlParams });
     if (params && !name && !page) urlParams.push(params);
 
     const urlParamsString = urlParams.length > 0 ? `?${urlParams.join('&')}` : '';
