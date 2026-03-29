@@ -1,212 +1,169 @@
-# 03 List
+# Búsqueda de Usuarios - GitHub & Rick and Morty API
 
-## Summary
+Aplicación React que permite buscar y explorar usuarios de GitHub y personajes de Rick and Morty con paginación integrada.
 
-This example takes the _02-login_ example as a starting point.
+## 🚀 Características
 
-We are going to implement a list page and link it to a detail page.
+- **Búsqueda de usuarios de GitHub**: Acceso a la API de GitHub para buscar usuarios con información completa
+- **Búsqueda de personajes de Rick and Morty**: Integración con la API de Rick and Morty
+- **Paginación inteligente**: Sistema de paginación adaptado a cada API
+- **Búsqueda en tiempo real**: Debounce configurado para optimizar peticiones
+- **Rutas dedicadas**: Detalle de usuarios y personajes en rutas separadas
+- **Interfaz moderna**: UI construida con Material-UI
+- **TypeScript**: Tipado completo para mayor seguridad
 
-That is, we will show a list of members that belong to a Github organisation.
-and when we click on a user's name we'll navigate to the detail page by passing in the
-detail page by passing in the URL the id of the selected member.
+## 📋 Requisitos Previos
 
-In this example we'll do a direct implementation of the list, if you
-you want to see a step by step you can consult a previous example that we have
-which shows how to create a list of users step by step.
+- Node.js (v18 o superior)
+- npm o yarn
 
-## Paso a Paso
-
-- First we copy the above example, and do an _npm install_.
+## 🛠️ Instalación
 
 ```bash
+# Clonar el repositorio
+git clone <repository-url>
+
+# Instalar dependencias
 npm install
 ```
 
-- If we want to see what kind of data we are going to handle, we can open the web browser and see what Github's Rest API returns.
+## 📦 Stack Tecnológico
+
+- **React 19.1.0**: Framework principal
+- **TypeScript 5.8.3**: Lenguaje tipado
+- **Vite 7.0.4**: Herramienta de construcción rápida
+- **React Router DOM 7.8.2**: Enrutamiento
+- **Material-UI 7.3.9**: Componentes de UI
+- **Emotion**: Solución CSS-in-JS
+
+## 🎯 Scripts Disponibles
 
 ```bash
-https://api.github.com/orgs/lemoncode/members
+# Inicia el servidor de desarrollo
+npm start
+# Abre: http://localhost:5173
+
+# Construye la aplicación para producción
+npm run build
+
+# Vista previa de producción
+npm run preview
 ```
 
-- We are going to create an interface to have our interface typed, and modify the component that will display this listing.
+## 📁 Estructura del Proyecto
 
-_./src/list.tsx_
-
-```diff
-import React from "react";
-import { Link } from "react-router-dom";
-
-+ interface MemberEntity {
-+   id : string;
-+   login: string;
-+   avatar_url: string;
-+ }
-
-export const ListPage: React.FC = () => {
-+  const [members, setMembers] = React.useState<MemberEntity[]>([]);
-
-  return (
-    <>
-      <h2>Hello from List page</h2>
-      <Link to="/detail">Navigate to detail page</Link>
-    </>
-  );
-};
+```
+src/
+├── app.tsx                          # Componente raíz
+├── index.tsx                        # Punto de entrada
+├── styles/                          # Estilos globales
+├── core/
+│   └── router/                      # Configuración de rutas
+│       ├── router.component.tsx
+│       ├── routes.ts
+│       └── source.ts
+├── layouts/                         # Layouts base
+│   ├── list.layout.tsx
+│   └── detail.layout.tsx
+├── scenes/                          # Páginas completas
+│   ├── listGithub.page.tsx
+│   ├── detailGithub.page.tsx
+│   ├── listRym.page.tsx
+│   └── detailRym.page.tsx
+├── pods/                            # Funcionalidades específicas
+│   ├── listGithub/                  # Búsqueda de usuarios GitHub
+│   ├── detailGithub/                # Detalle de usuario GitHub
+│   ├── listRym/                     # Búsqueda de personajes RYM
+│   └── detailRym/                   # Detalle de personaje RYM
+└── common/                          # Componentes y hooks compartidos
+    ├── components/                  # Componentes reutilizables
+    │   ├── list-header/
+    │   ├── list-search-bar/
+    │   ├── list-pagination/
+    │   └── app-bar/
+    ├── hooks/                       # Hooks personalizados
+    │   ├── use-debounce.ts
+    │   ├── use-queryParam.ts
+    │   └── usePagination.ts
+    └── pods/
+        └── list/                    # Lógica compartida de listas
 ```
 
-- We are now going to load the data
+## 🏗️ Arquitectura
 
-_./src/list.tsx_
+### Patrón Pod
 
-```diff
-export const ListPage: React.FC = () => {
-  const [members, setMembers] = React.useState<MemberEntity>([]);
+El proyecto utiliza la arquitectura **Pod** que organiza funcionalidades en módulos independientes:
 
-+  React.useEffect(() => {
-+    fetch(`https://api.github.com/orgs/lemoncode/members`)
-+      .then((response) => response.json())
-+      .then((json) => setMembers(json));
-+  }, []);
+- **Api layer**: `*.api.ts` y `*.api-model.ts` - Llamadas HTTP
+- **View Model**: `*.vm.ts` - Transformación de datos
+- **Mappers**: `*.mappers.ts` - Conversión entre modelos
+- **Container**: `*.container.tsx` - Lógica y estado
+- **Presentación**: `*.component.tsx` - UI pura
+- **Componentes**: `components/` - Componentes específicos del pod
 
-  return (
+### Hooks Personalizados
+
+- **`useSearchableList`**: Maneja búsqueda, paginación y loading
+- **`usePagination`**: Genera números de página y botones prev/next
+- **`useDebounce`**: Debounce configurable para búsquedas
+- **`useQueryParam`**: Sincroniza parámetros con URL
+
+## 🔌 APIs Integradas
+
+### GitHub API
+- Búsqueda de usuarios: `GET /search/users`
+- Detalles de usuario: `GET /users/{username}`
+
+### Rick and Morty API
+- Búsqueda de personajes: `GET /character`
+- Detalles de personaje: Incluidos en listado con paginación
+
+## 🎨 Alias de Rutas
+
+Configurados en `vite.config.ts`:
+
+```typescript
+@src   → src/
+@core  → src/core/
+@pods  → src/pods/
 ```
 
-- Let's check that the data is indeed being loaded:
+Uso: `import Component from '@src/common/components/list-header'`
 
-_./src/list.tsx_
+## ⚙️ Configuración TypeScript
 
-```diff
-  return (
-    <>
-      <h2>Hello from List page</h2>
-+    {members.map((member) =>
-+       <span key={member.id}>{member.login}</span>
-+    )}
--      <Link to="/detail">Navigate to detail page</Link>
-    </>
-  );
-```
+- Fichero: `tsconfig.json`
+- Paths configurados para alias
+- Módulos ES
+- DOM liberías incluidas
 
-- And now let's add a grid table showing the data:
+## 🎯 Flujo de Búsqueda
 
-_./src/styles.css_
+1. Usuario ingresa término en SearchBar
+2. Debounce espera 500ms sin cambios
+3. Se dispara petición a API
+4. Los resultados se pagina según la API
+5. Se actualiza estado local con ítems y páginas
+6. Componente se re-renderiza
 
-```diff
-+ .list-user-list-container {
-+  display: grid;
-+  grid-template-columns: 80px 1fr 3fr;
-+  grid-template-rows: 20px;
-+  grid-auto-rows: 80px;
-+  grid-gap: 10px 5px;
-+}
-+
-+.list-header {
-+  background-color: #2f4858;
-+  color: white;
-+  font-weight: bold;
-+}
-+
-+.list-user-list-container > img {
-+  width: 80px;
-+}
-```
+## 📝 Desarrollo
 
-_./src/list.tsx_
+### Variables de Entorno
 
-```diff
-  return (
-    <>
--      <h2>Hello from List page</h2>
--      {members.map((member) => (
--        <span key={member.id}>{member.login}</span>
--      ))}
-+      <div className="list-user-list-container">
-+        <span className="list-header">Avatar</span>
-+        <span className="list-header">Id</span>
-+        <span className="list-header">Name</span>
-+        {members.map((member) => (
-+          <React.Fragment key={member.id}>
-+            <img src={member.avatar_url} />
-+            <span>{member.id}</span>
-+            <span>{member.login}</span>
-+          </React.Fragment>
-+        ))}
-+      </div>
-    </>
-  );
-```
+No hay variables de entorno requeridas actualmente. Las APIs son públicas.
 
-- So far so good, but I want that when the user clicks on a member's name, he/she navigates to the
-  member navigates to the detail page of the application to display the token, we could first
-  first we could think of building something like this:
+## 🚨 Información Importante
 
-```diff
-  <td>
--    <span>{member.login}</span>
-+    <Link to={`/detail/${member.login}`}>{member.login}</Link>
-  </td>
-```
+- **Paginación de GitHub**: Usa headers `Link` con URLs directas
+- **Paginación de RYM**: Retorna objeto con `info.pages` y `next` URL
+- **Debounce**: Solo aplica a búsqueda, no a paginación inmediata
+- **Loading state**: Oculta paginación mientras se carga
 
-- Another way to create the url is to use _generatePath_, but be careful in version 5
-  this did do the encoding of the parameters, in version 6 it didn't (https://github.com/remix-run/react-router/issues/7428)
+## 📄 Licencia
 
-_./src/list.tsx_
+Proyecto de formación LemonCode.
 
-```diff
-import React from "react";
-- import { Link } from "react-router-dom";
-+ import { Link, generatePath } from "react-router-dom";
-```
+## 👨‍💻 Autor
 
-_./src/list.tsx_
-
-```diff
-  <td>
--    <Link to={`/detail/${member.login}`}>{member.login}</Link>
-+    <Link to={generatePath('/detail/:id', {id: member.login})}>{member.login}</Link>
-  </td>
-```
-
-What is the impact of not encoding? If you want to test it, replace the code inside the useEffect with this one;
-
-```tsx
-setMembers([{ id: "2", login: "a/b", avatar_url: "" }]);
-```
-
-> In the architecture part we will learn how to remove "magic strings" from our application.
-> harcoding url all around our app is not a good idea.
-
-- Very interesting, but how can I read the id of the user I am receiving in the URL parameter?
-
-First we are going to define the parameter in the url of our router.
-
-_./src/app.tsx_
-
-```diff
--  <Route path="/detail" element={<DetailPage />} />
-+  <Route path="/detail/:id" element={<DetailPage/>}/>
-  </Route>
-```
-
-Using the _useParams_ hooks.
-
-_./src/detail.tsx_
-
-```diff
-import React from "react";
-- import { Link } from "react-router-dom";
-+ import { Link, useParams } from "react-router-dom";
-
-
-export const DetailPage: React.FC = () => {
-+ const {id} = useParams();
-
-  return (
-    <>
-      <h2>Hello from Detail page</h2>
-+     <h3>User Id: {id}</h3>
-      <Link to="/list">Back to list page</Link>
-    </>
-  );
-};
-```
+Ferran Puig

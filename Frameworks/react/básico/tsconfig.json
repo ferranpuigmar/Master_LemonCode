@@ -17,7 +17,8 @@
     "useDefineForClassFields": true,
     "paths": {
       "@src/*": ["./src/*"],
-      "@core/*": ["./src/core/*"]
+      "@core/*": ["./src/core/*"],
+      "@pods/*": ["./src/pods/*"]
     }
   },
   "include": ["src"]

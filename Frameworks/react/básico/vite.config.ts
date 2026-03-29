@@ -9,6 +9,7 @@ export default defineConfig({
     alias: {
       "@src": resolve(__dirname, "src"),
       "@core": resolve(__dirname, "src/core"),
+      "@pods": resolve(__dirname, "src/pods"),
     },
   }
 });
