@@ -5,6 +5,8 @@ import { GetItemsListFn, GetListItemsParams, GetListItemsResponse } from "@src/c
 
 type Result = GetListItemsResponse<MemberEntity, MemberRickAndMortyEntityApiInfo>;
 
+const baseUrl = "https://rickandmortyapi.com/api/character";
+
 export const getCharactersCollection: GetItemsListFn<GetListItemsParams, Result> = async ({ name, params, page }) => {
     const urlParams: string[] = [];
     if (name) urlParams.push(`name=${name}`);
@@ -14,7 +16,7 @@ export const getCharactersCollection: GetItemsListFn<GetListItemsParams, Result>
     const urlParamsString = urlParams.length > 0 ? `?${urlParams.join('&')}` : '';
 
     try {
-        const response: Response = await fetch(`https://rickandmortyapi.com/api/character${urlParamsString}`);
+        const response: Response = await fetch(`${baseUrl}${urlParamsString}`);
         if (response.status === 404 || !response.ok) {
             return { data: [], paginationInfo: { count: 0, pages: 0, next: null, prev: null } };
         }

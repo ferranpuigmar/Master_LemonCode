@@ -3,6 +3,8 @@ import { MemberGithubEntityApiResponse } from "./list.api-model";
 import { mapMemberGithubApiToVm } from "./list.mapper";
 import { MemberEntity } from "@src/common/pods/list/list.vm";
 
+const baseUrl = "https://api.github.com/orgs";
+
 export const DEFAULT_MEMBER_FOR_GITHUB = 'lemoncode';
 
 type Result = GetListItemsResponse<MemberEntity, string | undefined>;
@@ -10,7 +12,7 @@ type Result = GetListItemsResponse<MemberEntity, string | undefined>;
 export const getMemberCollection: GetItemsListFn<GetListItemsParams, Result> = async ({ name, params }) => {
     const urlParams = params ? `?${params}` : '';
     try {
-        const response: Response = await fetch(`https://api.github.com/orgs/${name}/members${urlParams}`);
+        const response: Response = await fetch(`${baseUrl}/${name}/members${urlParams}`);
         if (response.status === 404 || !response.ok) {
             return { data: [], paginationInfo: undefined };
         }
