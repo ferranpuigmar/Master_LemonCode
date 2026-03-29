@@ -3,18 +3,18 @@ import { GetTotalPagesCB, useGetTotalPages } from "./use-pagination";
 import { useDebounce } from "@src/common/hooks/use-debounce";
 import { FetchResult, useFetchData } from "./use-fetch-data";
 
-export type ListStrategy<Item, SearchParams, PaginationInfo> = {
+export type UseSearchableListOptions<Item, SearchParams, PaginationInfo> = {
     fetchCB: (search: SearchParams) => Promise<FetchResult<Item, PaginationInfo>>;
     getTotalPagesCB: GetTotalPagesCB<PaginationInfo>;
 };
 
-export const useSearchableList = <Item, SearchParams, PaginationInfo>(strategy: ListStrategy<Item, SearchParams, PaginationInfo>
+export const useSearchableList = <Item, SearchParams, PaginationInfo>(options: UseSearchableListOptions<Item, SearchParams, PaginationInfo>
 ) => {
     const { debounce } = useDebounce();
-    const { totalPages, setPaginationInfo } = useGetTotalPages({ pageGeneratorCallBack: strategy.getTotalPagesCB });
+    const { totalPages, setPaginationInfo } = useGetTotalPages({ pageGeneratorCallBack: options.getTotalPagesCB });
 
     const { items, isLoading, fetch } = useFetchData({
-        fetchCB: strategy.fetchCB,
+        fetchCB: options.fetchCB,
         onPaginationChange: setPaginationInfo
     });
 

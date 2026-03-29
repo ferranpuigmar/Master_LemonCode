@@ -4,7 +4,7 @@ import SearchBar from '@src/common/components/list-search-bar';
 import ListHeader from '@src/common/components/list-header';
 import { useQueryParam } from '@src/common/hooks/use-queryParam';
 import { getTotalPagesFromLinkHeader } from './hooks/use-pagination/use-pagination.utils';
-import { ListStrategy, useSearchableList } from '@src/common/pods/list/hooks/use-searchable-list';
+import { useSearchableList, UseSearchableListOptions } from '@src/common/pods/list/hooks/use-searchable-list';
 import { MemberEntity } from '@src/common/pods/list/list.vm';
 import { PER_PAGE, QUERY_PARAM_NAME } from '@src/common/pods/list/list.constants';
 import ListComponent from '@src/common/pods/list/list.component';
@@ -14,7 +14,7 @@ import { GetListItemsParams } from '@src/common/pods/list/list.api';
 
 const DEFAULT_SEARCH_PARAMS = `per_page=${PER_PAGE}&page=1`;
 
-const strategy: ListStrategy<MemberEntity, GetListItemsParams, string | undefined> = {
+const options: UseSearchableListOptions<MemberEntity, GetListItemsParams, string | undefined> = {
     fetchCB: getMemberCollection,
     getTotalPagesCB: getTotalPagesFromLinkHeader
 };
@@ -26,7 +26,7 @@ const ListGithubContainer = () => {
         search,
         isLoading,
         totalPages,
-    } = useSearchableList(strategy);
+    } = useSearchableList(options);
 
     const { queryParam, setQueryParamInUrl } = useQueryParam(QUERY_PARAM_NAME);
     const [searchTerm, setSearchTerm] = React.useState<string>('');

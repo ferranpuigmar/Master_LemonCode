@@ -5,7 +5,7 @@ import ListHeader from '@src/common/components/list-header';
 import { useQueryParam } from '@src/common/hooks/use-queryParam';
 import { MemberEntity } from '@src/common/pods/list/list.vm';
 import { MemberRickAndMortyEntityApiInfo } from './list-rym.api-model';
-import { ListStrategy, useSearchableList } from '@src/common/pods/list/hooks/use-searchable-list';
+import { useSearchableList, UseSearchableListOptions } from '@src/common/pods/list/hooks/use-searchable-list';
 import { getCharactersCollection } from './list-rym.api';
 import { getTotalPagesFromApiInfo } from './hooks/use-pagination/use-pagination.utils';
 import { QUERY_PARAM_NAME } from '@src/common/pods/list/list.constants';
@@ -14,7 +14,7 @@ import { routes } from '@src/core/router/routes';
 import { GetListItemsParams } from '@src/common/pods/list/list.api';
 import { Box, Container, Stack } from '@mui/material';
 
-const strategy: ListStrategy<MemberEntity, GetListItemsParams, MemberRickAndMortyEntityApiInfo> = {
+const options: UseSearchableListOptions<MemberEntity, GetListItemsParams, MemberRickAndMortyEntityApiInfo> = {
     fetchCB: getCharactersCollection,
     getTotalPagesCB: getTotalPagesFromApiInfo
 };
@@ -26,7 +26,7 @@ const ListRymContainer = () => {
         search,
         isLoading,
         totalPages
-    } = useSearchableList(strategy);
+    } = useSearchableList(options);
 
     const { queryParam, setQueryParamInUrl } = useQueryParam(QUERY_PARAM_NAME);
     const [searchTerm, setSearchTerm] = React.useState<string>('');
