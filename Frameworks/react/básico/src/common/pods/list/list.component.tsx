@@ -20,7 +20,9 @@ const ListComponent = ({ members, searchTerm, isLoading, route, paramIdentifier 
     }
 
     if (members.length === 0) {
-        return <Typography>No members found for "{searchTerm}"</Typography>
+        const termkey = searchTerm ? ` for "${searchTerm}"` : '';
+        
+        return <Typography>No members found{termkey}</Typography>
     }
 
     const params = searchTerm ? `?${QUERY_PARAM_NAME}=${searchTerm}` : '';
