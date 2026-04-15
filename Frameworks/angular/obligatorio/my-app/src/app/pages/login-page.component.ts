@@ -8,7 +8,7 @@ import { AuthService } from '../auth/auth.service';
   standalone: true,
   imports: [ReactiveFormsModule],
   template: `
-    <section class="page">
+    <section>
       <h1>Login</h1>
       <form class="form" autocomplete="off" [formGroup]="loginForm" (ngSubmit)="login()">
         <label>
@@ -37,17 +37,6 @@ import { AuthService } from '../auth/auth.service';
   `,
   styles: [
     `
-      .page {
-        background: #fff;
-        border: 1px solid #dee2e6;
-        border-radius: 12px;
-        padding: 1.2rem;
-      }
-
-      h1 {
-        margin-top: 0;
-      }
-
       .form {
         display: grid;
         gap: 0.8rem;

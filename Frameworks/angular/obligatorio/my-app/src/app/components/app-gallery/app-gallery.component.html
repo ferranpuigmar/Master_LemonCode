@@ -1,0 +1,27 @@
+<h2>Galería</h2>
+<div class="gallery">
+  <div class="gallery-selected-image">
+    <button [disabled]="!previousArrowVisible || !hasImages" class="gallery-arrow-nav gallery-arrow-nav--previous" type="button" (click)="showPreviousImage()"><img src="assets/arrow-left.svg" alt="Anterior"></button>
+    <div class="gallery-selected__wrapper">
+      @if(hasImages) {
+        <img [src]="selectedImage.src" [alt]="selectedImage.title" [style.transform]="'scale(' + imageScale + ')'" />
+      }
+    </div>
+    <button [disabled]="!nextArrowVisible || !hasImages" class="gallery-arrow-nav gallery-arrow-nav--next" type="button" (click)="showNextImage()"><img src="assets/arrow-right.svg" alt="Siguiente"></button>
+  </div>
+
+  <div class="gallery-controls">
+    <button type="button" (click)="increaseZoom()">Aumentar</button>
+    <button type="button" (click)="decreaseZoom()">Disminuir</button>
+    <button type="button" (click)="play()">Play</button>
+    <button type="button" (click)="stop()">Stop</button>
+  </div>
+
+  <div class="gallery-thumbnails">
+    @for (image of thumbnailImages; track image.id) {
+      <div class="gallery-thumbnail">
+        <img [class.selected]="image.id === selectedImage.id" [src]="image.src" [alt]="image.title" (click)="handleSelectImage(image)" />
+      </div>
+    }
+  </div>
+</div>

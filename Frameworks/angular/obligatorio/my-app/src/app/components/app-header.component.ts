@@ -28,7 +28,7 @@ import { AppLoggedInfoComponent } from "./app-logged-info.component";
     `,
     styles: `
         header {
-            background-color: #F7F7EE;
+            background-color: var(--primary-color-light);
             padding: 1rem;
         }
 
