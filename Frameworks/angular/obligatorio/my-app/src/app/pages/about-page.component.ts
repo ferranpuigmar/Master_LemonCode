@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   template: `
     <section>
       <h1>Acerca de</h1>
-      <p>Esta pagina muestra informacion estatica sobre la aplicacion y su proposito.</p>
+      <p>Página acerca de la aplicación.</p>
     </section>
   `,
   styles: ''

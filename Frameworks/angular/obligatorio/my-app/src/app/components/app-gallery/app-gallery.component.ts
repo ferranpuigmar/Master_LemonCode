@@ -1,4 +1,4 @@
-import { Component, OnDestroy, inject } from '@angular/core';
+import { Component, OnDestroy, inject, WritableSignal, signal } from '@angular/core';
 import { GalleryImage, GalleryStateService } from '../../gallery/gallery-state.service';
 
 @Component({
@@ -7,8 +7,12 @@ import { GalleryImage, GalleryStateService } from '../../gallery/gallery-state.s
     templateUrl: './app-gallery.component.html',
     styleUrls: ['./app-gallery.component.css']
 })
-export class AppGalleryComponent {
+export class AppGalleryComponent implements OnDestroy {
     private readonly galleryService = inject(GalleryStateService);
+    private timmer: ReturnType<typeof setInterval> | null = null;
+
+    private readonly isPlayingSignal: WritableSignal<boolean> = signal(false);
+    readonly isPlaying = this.isPlayingSignal.asReadonly();
 
     hasImages = this.galleryService.galleryImages.length > 0;
     selectedImage: GalleryImage = this.galleryService.selectedImage;
@@ -38,14 +42,30 @@ export class AppGalleryComponent {
     }
 
     increaseZoom(): void {
+        this.imageScale += 0.1;
     }
 
     decreaseZoom(): void {
+        if(this.imageScale <= 1) {
+            return;
+        }
+
+        this.imageScale -= 0.1;
     }
 
     play(): void {
+        this.isPlayingSignal.set(true);
+        this.timmer = setInterval(() => {
+            this.showNextImage();
+        }, 2000);
     }
 
     stop(): void {
+        this.isPlayingSignal.set(false);
+        this.timmer && clearInterval(this.timmer);
+    }
+
+    ngOnDestroy(): void {
+        this.stop();
     }
 }

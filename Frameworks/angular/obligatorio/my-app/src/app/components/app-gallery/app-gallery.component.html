@@ -12,9 +12,9 @@
 
   <div class="gallery-controls">
     <button type="button" (click)="increaseZoom()">Aumentar</button>
-    <button type="button" (click)="decreaseZoom()">Disminuir</button>
-    <button type="button" (click)="play()">Play</button>
-    <button type="button" (click)="stop()">Stop</button>
+    <button [disabled]="imageScale <= 1" type="button" (click)="decreaseZoom()">Disminuir</button>
+    <button [disabled]="isPlaying()" type="button" (click)="play()">Play</button>
+    <button [disabled]="!isPlaying()" type="button" (click)="stop()">Stop</button>
   </div>
 
   <div class="gallery-thumbnails">

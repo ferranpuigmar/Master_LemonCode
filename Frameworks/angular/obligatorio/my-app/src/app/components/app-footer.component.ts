@@ -7,7 +7,6 @@ import { Component } from '@angular/core';
     <footer class="footer">
       <div class="container">
         <p>2026 Lemon Frameworks - Ejercicio Angular.</p>
-        <p>Contenido estatico de pie de pagina.</p>
       </div>
     </footer>
   `,

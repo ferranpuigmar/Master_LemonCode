@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   template: `
     <section>
       <h1>CRUD</h1>
-      <p>Pantalla preparada para operaciones de alta, baja, modificacion y consulta.</p>
+      <p>Página de un CRUD de la aplicación.</p>
     </section>
   `,
   styles: ''

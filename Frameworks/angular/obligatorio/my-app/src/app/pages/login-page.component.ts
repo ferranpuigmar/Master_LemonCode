@@ -16,15 +16,15 @@ import { AuthService } from '../auth/auth.service';
           <input type="email" placeholder="Introduce tu usuario" formControlName="username" />
         </label>
         @if (username.invalid && (username.dirty || username.touched)) {
-          <p class="error">Introduce un email valido.</p>
+          <p class="error">Introduce un email válido.</p>
         }
 
         <label>
-          Contrasena
-          <input type="password" placeholder="Introduce tu contrasena" formControlName="password" />
+          Contraseña
+          <input type="password" placeholder="Introduce tu contraseña" formControlName="password" />
         </label>
         @if (password.invalid && (password.dirty || password.touched)) {
-          <p class="error">La contrasena es obligatoria (minimo 8 caracteres).</p>
+          <p class="error">La contraseña es obligatoria (mínimo 8 caracteres).</p>
         }
 
         @if (loginError) {
