@@ -3,6 +3,20 @@
 Catálogo de casas rurales construido con **Next.js (App Router)**. Permite listar
 alojamientos, buscarlos, ver su detalle y reservar fechas con un calendario.
 
+## Desafíos implementados
+
+- **Next.js App Router** con separación **Server / Client Components**.
+- **Gestión de estado con Context API** (`useContext`): 3 providers compuestos en
+  una única frontera cliente.
+- **SSR en el layout** que carga las casas en servidor y **alimenta los providers**.
+- **SSG + ISR** en el detalle: `generateStaticParams` (build), `dynamicParams`
+  (generación bajo demanda) y `revalidate` (revalidación en segundo plano).
+- **Manejo de error con reintento** desde cliente usando **`useTransition`** (React 19).
+- **View Transitions API** en la navegación (`next-view-transitions`).
+- **Buscador con _debounce_** (`use-debounce`).
+- **Optimización** de imágenes (`next/image`) y fuentes (`next/font`).
+- **Organización por _features_** con _barrels_ (`index.ts`).
+
 ## Funcionalidad
 
 - **Listado** de casas con **buscador** por nombre o ubicación (con _debounce_).
