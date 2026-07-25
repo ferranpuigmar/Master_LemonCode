@@ -1,0 +1,14 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "casa-rural-dev",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": [
+        "-lc",
+        "export NVM_DIR=$HOME/.nvm && . \"$NVM_DIR/nvm.sh\" && nvm use 22 >/dev/null && pnpm dev"
+      ],
+      "port": 3000
+    }
+  ]
+}

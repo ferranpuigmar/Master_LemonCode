@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+
+@theme {
+  /* Colors */
+  --color-bg:           #F3EBE2;
+  --color-surface:      #FFFFFF;
+  --color-border:       #E5DDD5;
+  --color-accent:       #D4916E;
+  --color-accent-dark:  #97512B;
+  --color-bg-primary:   #f2eae1;
+
+  --color-fg-primary:   #1A1A1A;
+  --color-fg-secondary: #3D3D3D;
+  --color-fg-muted:     #6B6B6B;
+  --color-fg-inverse:   #FFFFFF;
+
+  /* Typography */
+  --font-heading: "Playfair Display", serif;
+  --font-body:    "Inter", sans-serif;
+
+  /* Border radius */
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-drawer: -8px 0 24px rgb(0 0 0 / 0.15);
+}
+
+.layout-enter-active,
+.layout-leave-active {
+  opacity: 1;
+  transition: opacity 0.3s ease, opacity 0.3s ease-in-out;
+}
+.layout-enter-from,
+.layout-leave-to {
+  opacity: 0;
+}
+
+body {
+  font-family: var(--font-body);
+}
+
+/* Vue Datepicker theming */
+.dp--theme-light.dp--theme-light {
+  --dp-primary-color: var(--color-accent);
+  --dp-primary-text-color: var(--color-fg-inverse);
+  --dp-highlight-color: rgb(220 38 38 / 0.12);
+  --dp-border-radius: 8px;
+  --dp-font-family: var(--font-body);
+}
