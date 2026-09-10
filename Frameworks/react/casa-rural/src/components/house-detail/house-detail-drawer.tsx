@@ -1,9 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { X } from 'lucide-react'
 import type { ReactNode } from 'react'
+import { useIsClient } from '@/hooks/use-is-client'
 
 interface DrawerProps {
   isOpen: boolean
@@ -20,13 +20,9 @@ export function HouseDetailDrawer({
   price = 0,
   children,
 }: DrawerProps) {
-  const [mounted, setMounted] = useState(false)
+  const isClient = useIsClient()
 
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) return null
+  if (!isClient) return null
 
   return createPortal(
     <aside
